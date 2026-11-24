@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#10100e">
-<title>TAI GAME FESTIVAL VOTING PLATFORM</title>
-<meta name="description" content="Official Tai Game Festival and Pageantry voting platform.">
+<title>TAI GAME FESTIVAL &amp; PAGEANTRY | Registration Portal</title>
+<meta name="description" content="Official Tai Game Festival and Pageantry registration information.">
 <link rel="canonical" href="https://taigamefestival.com/">
-<meta property="og:title" content="TAI GAME FESTIVAL VOTING PLATFORM">
+<meta property="og:title" content="TAI GAME FESTIVAL &amp; PAGEANTRY | Registration Portal">
 <meta property="og:url" content="https://taigamefestival.com/">
 <style>
 :root{--bg:#0d0e0c;--panel:#171914;--gold:#d9b45b;--gold2:#f0d995;--muted:#a7a99e;--line:#34362e;--white:#f7f5ee}
@@ -48,109 +48,211 @@ footer{border-top:1px solid var(--line);padding:28px 22px;color:var(--muted);tex
 .dialog{width:min(520px,100%);background:#171914;border:1px solid #69572e;border-radius:12px;padding:24px;position:relative}
 .close{position:absolute;right:17px;top:12px;background:none;border:0;color:white;font-size:25px;cursor:pointer}
 label{display:block;color:#d7d5ca;font-size:13px;margin:14px 0 6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #45473d;background:#0e0f0c;color:white;border-radius:5px;font:inherit}
-input[type=file]{font-size:12px}input[type=checkbox]{width:auto;accent-color:var(--gold)}
-.registration-layout{display:grid;grid-template-columns:1.5fr .8fr;gap:22px;align-items:start}.registration-form,.registration-aside{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.help{display:block;color:var(--muted);font-size:12px;margin-top:5px}.category-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}.category-option{display:flex;gap:9px;align-items:center;background:#10110d;border:1px solid var(--line);border-radius:6px;padding:11px;font-size:13px}.category-option input{width:auto}.consent{display:flex;gap:9px;align-items:flex-start;line-height:1.45}.consent input{margin-top:4px;flex:0 0 auto}.registration-aside{position:sticky;top:90px}.fee-big{font-size:42px;color:var(--gold);font-weight:900}.registration-aside hr{border:0;border-top:1px solid var(--line);margin:20px 0}.registration-aside li{color:#c3c4ba;margin:10px 0;font-size:13px}
+input,select{width:100%;padding:12px;border:1px solid #45473d;background:#0e0f0c;color:white;border-radius:5px;font:inherit}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.form-grid .wide{grid-column:1/-1}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}}
 .calc{margin-top:15px;padding:14px;background:#242116;border-radius:6px;display:flex;justify-content:space-between;align-items:center}
 .calc strong{font-size:24px;color:var(--gold)}
 .pending{font-size:12px;color:#d7c58e;margin-top:14px}
-@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:52px}.grid{grid-template-columns:repeat(2,1fr)}.rules{grid-template-columns:1fr}nav{gap:12px}.section-head{display:block}.registration-layout{grid-template-columns:1fr}.registration-aside{position:static}}
-@media(max-width:480px){.grid{grid-template-columns:1fr}.nav{align-items:flex-start}.brand{font-size:12px}nav{justify-content:flex-end}nav a{font-size:11px}.form-grid,.category-checks{grid-template-columns:1fr}.registration-form,.registration-aside{padding:16px}}
+.terms-panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;max-height:620px;overflow:auto}
+.terms-panel h3{color:var(--gold2);font-size:15px;margin:25px 0 8px}
+.terms-panel h3:first-child{margin-top:0}
+.terms-panel p,.terms-panel li{color:#d0d0c6;font-size:14px}
+.terms-panel li{margin:7px 0}
+.terms-panel ul{padding-left:22px}
+.terms-important{margin-top:22px;padding:16px;border:1px solid #8d753d;background:#201c11;border-radius:7px;color:#f0d995;font-size:14px}
+.terms-signoff{text-align:center;margin-top:24px!important}
+.accept-box{margin-top:20px;padding:20px;border:1px solid #65532c;border-radius:8px;background:#201c11}
+.accept-label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px!important;line-height:1.5}
+.accept-label input{width:19px;height:19px;min-width:19px;margin:2px 0 0;accent-color:var(--gold)}
+#termsContinue:disabled{opacity:.45;cursor:not-allowed}
+#termsContinue{margin-top:16px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:52px}.grid{grid-template-columns:repeat(2,1fr)}.rules{grid-template-columns:1fr}nav{gap:12px}.section-head{display:block}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.nav{align-items:flex-start}.brand{font-size:12px}nav{justify-content:flex-end}nav a{font-size:11px}}
 </style>
 </head>
 <body>
 <header><div class="nav">
-  <div class="brand"><div class="mark">T</div><div>TAI GAME FESTIVAL<br><span style="font-size:9px;color:var(--gold);letter-spacing:.2em">OFFICIAL VOTING PORTAL</span></div></div>
-  <nav><a href="#register">Contestant registration</a><a href="#categories">Categories</a><a href="#how">How to vote</a><a href="#results">Results</a></nav>
+  <div class="brand"><div class="mark">T</div><div>TAI GAME FESTIVAL<br><span style="font-size:9px;color:var(--gold);letter-spacing:.2em">OFFICIAL REGISTRATION PORTAL</span></div></div>
+  <nav><a href="#categories">Activities &amp; Fees</a><a href="#register">Register</a><a href="#terms">Terms &amp; Conditions</a></nav>
 </div></header>
 <main>
 <section class="hero">
   <div><div class="eyebrow">First edition · Tai, Rivers State</div>
     <h1>CELEBRATE<br>THE <span>STARS</span><br>OF TAI.</h1>
-    <p class="lead">Recognising confidence, influence, style and active community spirit. Explore the award categories and support your favourite nominee.</p>
-    <div class="actions"><a class="btn" href="#categories">Explore categories</a><a class="btn secondary" href="#how">How voting works</a></div>
+    <p class="lead">A celebration of games, pageantry, talent and community spirit. Choose an activity, review its registration fee and follow the official registration process.</p>
+    <div class="actions"><a class="btn" href="#categories">Explore activities</a><a class="btn secondary" href="#register">Register to participate</a></div>
   </div>
   <div class="hero-card"><div class="eyebrow">One community. Many stars.</div><div class="big">TGF<br>01</div><p>TAI GAME FESTIVAL &amp; PAGEANTRY<br>Unity · Talent · Healthy Competition</p></div>
 </section>
-<div class="strip"><div class="strip-inner"><span>CONTESTANT REGISTRATION <strong>₦5,000 PER CATEGORY</strong></span><span>VOTING RATE <strong>₦100 = 1 VOTE</strong></span><span>VOTING <strong>NOT YET OPEN</strong></span></div></div>
-<section id="register">
-  <div class="section-head"><div><div class="eyebrow">Join the competition</div><h2>Contestant registration</h2></div><p class="sub">Register for one or more award categories. The registration fee is ₦5,000 for each category selected.</p></div>
-  <div class="registration-layout">
-    <form class="registration-form" id="registrationForm">
-      <div class="form-grid">
-        <div><label for="fullName">Full name *</label><input id="fullName" name="fullName" autocomplete="name" required placeholder="Enter your full name"></div>
-        <div><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="e.g. 08012345678"></div>
-        <div><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
-        <div><label for="gender">Gender *</label><select id="gender" name="gender" required><option value="">Select gender</option><option>Female</option><option>Male</option><option>Prefer not to say</option></select></div>
-        <div><label for="location">Town / LGA *</label><input id="location" name="location" required placeholder="Enter your town or LGA"></div>
-        <div><label for="photo">Contestant photograph *</label><input id="photo" name="photo" type="file" accept="image/*" required><small class="help">Choose a clear portrait photo. Image upload is preview-only in this prototype.</small></div>
-      </div>
-      <label>Select category or categories * (₦5,000 each)</label>
-      <div class="category-checks" id="registrationCategories"></div>
-      <label for="bio">Short biography</label><textarea id="bio" name="bio" rows="4" maxlength="500" placeholder="Tell voters a little about yourself (maximum 500 characters)"></textarea>
-      <label class="consent"><input id="consent" type="checkbox" required> I confirm that the information supplied is accurate and agree that my approved name, photograph and biography may be displayed on the festival website.</label>
-      <div class="calc"><div><span class="help">Registration fee</span><div class="help" id="categoryCount">0 categories selected</div></div><strong id="feeTotal">₦0</strong></div>
-      <button class="btn" type="submit">Review registration</button>
-      <p class="pending" id="registrationMessage" role="status">Preview only: applications are not yet submitted or stored, and registration payments are not yet enabled.</p>
-    </form>
-    <aside class="registration-aside"><div class="eyebrow">Registration fee</div><div class="fee-big">₦5,000</div><p>per category entered</p><hr><p><b>What happens next?</b></p><ol><li>Complete your details and choose your categories.</li><li>The system calculates your total registration fee.</li><li>After the secure registration system is connected, you will pay through Paystack.</li><li>The organisers review and approve your entry before it appears publicly.</li></ol><div class="notice">Do not send registration money to any account yet. Online registration and Paystack payment have not been activated.</div></aside>
-  </div>
-</section>
+<div class="strip"><div class="strip-inner"><span>REGISTRATION <strong>NOW OPEN</strong></span><span>CURRENCY <strong>NIGERIAN NAIRA (₦)</strong></span><span>PAYMENT <strong>THROUGH APPROPRIATE AUTHORITIES</strong></span></div></div>
 <section id="categories">
-  <div class="section-head"><div><div class="eyebrow">Choose your category</div><h2>Voting categories</h2></div><p class="sub">Select a category to view its nominees and voting information. Nominee profiles will appear here after the organisers upload and approve them.</p></div>
-  <div class="grid" id="categoryGrid"></div>
-  <div class="notice"><b>Nomination phase:</b> Contestant names, photographs and biographies have not yet been supplied. This starter site therefore does not display invented nominees or fabricated vote totals.</div>
+  <div class="section-head"><div><div class="eyebrow">Choose your activity</div><h2>Activities &amp; Registration Fees</h2></div><p class="sub">Select from the indoor games, outdoor competition and pageantry categories available for the first edition of the Tai Game Festival.</p></div>
+  <h3 style="color:var(--gold2);margin:28px 0 14px">CATEGORY A · GAMES</h3>
+  <div class="grid" id="gamesGrid"></div>
+  <h3 style="color:var(--gold2);margin:36px 0 14px">CATEGORY B · PAGEANTRY</h3>
+  <div class="grid" id="pageantryGrid"></div>
+  <div class="notice"><b>Eligibility:</b> Category B (Pageantry) is strictly for indigenes of Tai Local Government Area, Rivers State. Tug of War registration is charged per person. All registrations must be completed through the appropriate authority.</div>
 </section>
-<section id="how">
-  <div class="eyebrow">Simple and transparent</div><h2>How voting works</h2>
-  <p class="sub">When voting opens, supporters will be able to select a verified nominee, enter their details and pay securely.</p>
-  <div class="rules">
-    <div class="rule"><b>01 · Choose</b>Select a category and the nominee you want to support.</div>
-    <div class="rule"><b>02 · Vote</b>Enter your name, phone number and amount. Every ₦100 earns 1 vote.</div>
-    <div class="rule"><b>03 · Confirm</b>Complete payment. Votes are added only after the payment provider verifies the transaction.</div>
+<section id="register">
+  <div class="eyebrow">Participant information</div><h2>Registration Interest Form</h2>
+  <p class="sub">Provide your details and select one activity. This preview displays the applicable fee; official registration and payment must be completed through the appropriate authority.</p>
+  <div class="dialog" style="width:100%;max-width:760px;margin-top:24px">
+    <form id="registrationForm">
+      <div class="form-grid">
+        <div><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" required placeholder="Enter your first name"></div>
+        <div><label for="otherNames">Other names</label><input id="otherNames" name="otherNames" autocomplete="additional-name" placeholder="Enter other names (if any)"></div>
+        <div><label for="surname">Surname</label><input id="surname" name="surname" autocomplete="family-name" required placeholder="Enter your surname"></div>
+        <div><label for="lga">L.G.A</label><input id="lga" name="lga" required placeholder="Enter your Local Government Area"></div>
+        <div><label for="state">State</label><input id="state" name="state" required placeholder="Enter your state"></div>
+        <div><label for="community">Community</label><input id="community" name="community" required placeholder="Enter your community"></div>
+        <div><label for="gender">Gender</label><select id="gender" name="gender" required><option value="">Select gender</option><option value="Male">Male</option><option value="Female">Female</option><option value="Prefer not to say">Prefer not to say</option></select></div>
+        <div><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="Enter your active phone number"></div>
+        <div class="wide"><label for="activity">Select category and activity</label><select id="activity" name="activity" required><option value="">Choose an activity</option></select></div>
+      </div>
+      <div class="calc"><span>Registration fee</span><strong id="feeDisplay">₦0</strong></div>
+      <div id="pageantryEligibility" class="notice" style="display:none">Pageantry is restricted to indigenes of Tai Local Government Area, Rivers State. Your indigene status may be verified by the organisers.</div>
+      <label id="indigeneLabel" class="accept-label" style="display:none"><input type="checkbox" id="taiIndigene"><span>I confirm that I am an indigene of Tai Local Government Area, Rivers State.</span></label>
+      <button class="btn" type="submit" style="margin-top:18px">Review Registration Details</button>
+      <p class="pending" id="registrationStatus" aria-live="polite">No registration or payment will be submitted from this preview.</p>
+    </form>
   </div>
-  <div class="notice">Payments are not enabled in this preview. A verified payment-gateway account and an approved festival settlement bank account must be connected before the public can pay or cast paid votes.</div>
 </section>
-<section id="results">
-  <div class="eyebrow">Live standings</div><h2>Leaderboard</h2>
-  <p class="sub">Official results will be published here when voting is activated. No sample scores are shown, to avoid confusing demonstration figures with real results.</p>
-  <div class="notice">Voting has not opened yet. Official leaderboard coming soon.</div>
-</section>
-</main>
-<footer>© <span id="year"></span> Tai Game Festival &amp; Pageantry · Official Voting Portal<br>Built for transparent, verified voting.</footer>
+<section id="terms">
+  <div class="eyebrow">Please read before registering</div>
+  <h2>Terms &amp; Conditions</h2>
+  <p class="sub">All participants and contestants intending to participate in the Tai Game Festival are required to read, understand, and agree to these terms before completing registration.</p>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
- <div class="dialog"><button class="close" onclick="closeModal()" aria-label="Close">×</button>
-  <div class="eyebrow">Tai Game Festival</div><h2 id="modalTitle">Category</h2>
-  <p class="sub">Nominee registration and approval are still in progress. Voting for this category is not open yet.</p>
-  <p style="color:var(--gold2);font-weight:700">Nominees will be published here after verification.</p>
-  <button class="btn" onclick="closeModal()">Back to categories</button>
- </div>
-</div>
+  <div class="terms-panel">
+    <h3>1. ELIGIBILITY</h3>
+    <ul>
+      <li>Participation is open to individuals who meet the eligibility requirements of their chosen category.</li>
+      <li>All contestants must provide accurate and verifiable personal information during registration.</li>
+      <li>Participants must comply with the rules and regulations governing their respective competitions.</li>
+      <li>The organisers reserve the right to disqualify any participant who provides false information or violates the festival's rules.</li>
+    </ul>
+
+    <h3>2. CATEGORY B – PAGEANTRY (RESTRICTION)</h3>
+    <ul>
+      <li>Participation in Category B (Pageantry) is strictly limited to indigenes of Tai Local Government Area, Rivers State.</li>
+      <li>Non-indigenes of Tai Local Government Area are not eligible to register or contest in any of the pageantry competitions.</li>
+      <li>Contestants may be required to provide valid proof of Tai indigene status when requested by the organisers.</li>
+      <li>The organisers reserve the right to verify the indigene status of all pageantry contestants.</li>
+    </ul>
+
+    <h3>3. REGISTRATION AND PAYMENT</h3>
+    <ul>
+      <li>All registrations must be completed through the appropriate authorities or officially designated registration channels recognised by the Tai Game Festival organisers.</li>
+      <li>Contestants are responsible for ensuring that their registration details are correctly submitted.</li>
+      <li>Registration fees must be paid through the officially approved payment channels or as directed by the appropriate authorities.</li>
+      <li>Registration is only considered valid upon confirmation by the designated registration authority.</li>
+    </ul>
+
+    <h3>4. NO REFUND POLICY</h3>
+    <ul>
+      <li>All registration fees paid are strictly non-refundable.</li>
+      <li>No refund shall be entertained after payment has been made, regardless of whether a contestant withdraws, becomes unavailable, is disqualified, or decides not to participate.</li>
+      <li>Contestants are therefore advised to carefully consider their participation and confirm their eligibility before making payment.</li>
+    </ul>
+
+    <h3>5. CONDUCT AND SPORTSMANSHIP</h3>
+    <ul>
+      <li>All participants are expected to demonstrate discipline, respect, fairness, and good sportsmanship throughout the festival.</li>
+      <li>Fighting, intimidation, harassment, cheating, manipulation of results, or any form of unsportsmanlike behaviour will not be tolerated.</li>
+      <li>Participants must respect fellow contestants, officials, organisers, and spectators.</li>
+      <li>Any participant found guilty of misconduct may face disqualification.</li>
+    </ul>
+
+    <h3>6. RULES AND REGULATIONS</h3>
+    <ul>
+      <li>Each competition or game shall operate under its specific rules and guidelines as established by the organisers.</li>
+      <li>Participants are expected to familiarise themselves with the rules of their chosen competition before participating.</li>
+      <li>The organisers reserve the right to make necessary adjustments to competition schedules, formats, or procedures where circumstances demand.</li>
+    </ul>
+
+    <h3>7. DISQUALIFICATION</h3>
+    <p>The organisers reserve the right to disqualify any contestant who:</p>
+    <ul>
+      <li>Provides false or misleading registration information.</li>
+      <li>Violates the rules and regulations of the festival.</li>
+      <li>Engages in cheating, manipulation, or fraudulent activities.</li>
+      <li>Displays conduct capable of disrupting the peace and integrity of the festival.</li>
+      <li>Fails to meet the eligibility requirements of their chosen category.</li>
+    </ul>
+
+    <h3>8. DECISIONS OF THE ORGANISERS</h3>
+    <ul>
+      <li>Decisions made by authorised competition officials and judges shall be respected.</li>
+      <li>Where necessary, the organisers shall establish appropriate procedures for addressing complaints or disputes.</li>
+      <li>The organisers reserve the right to interpret and enforce these terms and conditions in the overall interest of fairness, transparency, and the successful conduct of the festival.</li>
+    </ul>
+
+    <h3>9. ACCEPTANCE OF TERMS</h3>
+    <p>By registering for the Tai Game Festival and making payment where applicable, every participant or contestant confirms that they have read, understood, and agreed to abide by these Terms and Conditions.</p>
+
+    <div class="terms-important"><strong>IMPORTANT NOTICE:</strong> Registration for Category B (Pageantry) is exclusively reserved for indigenes of Tai Local Government Area. All registration processes must be handled through the appropriate authorities, and all payments made are non-refundable.</div>
+    <p class="terms-signoff"><strong>TAI GAME FESTIVAL ORGANISING COMMITTEE</strong><br>Promoting Unity, Healthy Competition, Talent and Youth Development.</p>
+  </div>
+
+  <div class="accept-box">
+    <label class="accept-label">
+      <input type="checkbox" id="termsAccept">
+      <span>I confirm that I have read, understood, and agree to the Tai Game Festival Terms and Conditions stated above.</span>
+    </label>
+    <button class="btn" id="termsContinue" type="button" disabled>Confirm Acceptance</button>
+    <p class="pending" id="termsStatus" aria-live="polite">Tick the box to confirm your acceptance.</p>
+  </div>
+  <div class="notice">Preview note: this checkbox demonstrates the acceptance step only. It does not submit a registration, store consent on a server, or activate payments. Those functions will be connected when the registration system is built.</div>
+</section>
+
+</main>
+<footer>© <span id="year"></span> Tai Game Festival &amp; Pageantry · Registration Information Portal<br>Promoting unity, healthy competition, talent and youth development.</footer>
+
 <script>
-const categories=[
-"Mr. Tai",
-"Mrs. Tai",
-"Most Influential Youth",
-"Most Active Comrade",
-"Best Dressed Female",
-"Best Dressed Male"
+const activities = [
+  {category:'Category A · Games',name:'Draught',fee:3000},
+  {category:'Category A · Games',name:'Mancala',fee:2000},
+  {category:'Category A · Games',name:'Tug of War',fee:2000,note:'per person'},
+  {category:'Category A · Games',name:'Whot',fee:3000},
+  {category:'Category A · Games',name:'Chess',fee:2000},
+  {category:'Category A · Games',name:'Ludo',fee:3000},
+  {category:'Category A · Games',name:'Table Tennis',fee:5000},
+  {category:'Category A · Games',name:'Snooker',fee:7000},
+  {category:'Category A · Games',name:'Scrabble',fee:2000},
+  {category:'Category A · Games',name:'Match and Win',fee:3000},
+  {category:'Category A · Games',name:'Table Soccer',fee:3000},
+  {category:'Category B · Pageantry',name:'Miss Tai',fee:10000,pageantry:true},
+  {category:'Category B · Pageantry',name:'Mr. Corporate',fee:10000,pageantry:true},
+  {category:'Category B · Pageantry',name:'Best Makeup Artist',fee:7000,pageantry:true}
 ];
-const grid=document.getElementById('categoryGrid');
-categories.forEach((name,i)=>{
- const card=document.createElement('article');card.className='category';
- card.innerHTML=`<div><small>CATEGORY 0${i+1}</small><h3>${name}</h3><div style="color:var(--muted);font-size:13px">Nominees to be announced</div></div><button type="button">View category →</button>`;
- card.querySelector('button').addEventListener('click',()=>openModal(name));grid.appendChild(card);
+const money = amount => '₦' + amount.toLocaleString('en-NG');
+function renderCards(items, targetId){
+  const target=document.getElementById(targetId);
+  items.forEach((item,index)=>{
+    const card=document.createElement('article');card.className='category';
+    card.innerHTML=`<div><small>${item.category.toUpperCase()}</small><h3>${item.name}</h3><div style="color:var(--gold2);font-weight:800">${money(item.fee)}${item.note?' <span style="font-size:12px;color:var(--muted);font-weight:500">'+item.note+'</span>':''}</div></div><button type="button">Select for registration →</button>`;
+    card.querySelector('button').addEventListener('click',()=>{const select=document.getElementById('activity');select.value=item.name;updateFee();document.getElementById('register').scrollIntoView({behavior:'smooth'});});
+    target.appendChild(card);
+  });
+}
+renderCards(activities.filter(x=>!x.pageantry),'gamesGrid');
+renderCards(activities.filter(x=>x.pageantry),'pageantryGrid');
+const select=document.getElementById('activity');
+activities.forEach(item=>{const option=document.createElement('option');option.value=item.name;option.textContent=`${item.category} — ${item.name} (${money(item.fee)}${item.note?' '+item.note:''})`;select.appendChild(option);});
+function updateFee(){const item=activities.find(x=>x.name===select.value);document.getElementById('feeDisplay').textContent=item?money(item.fee)+(item.note?' '+item.note:''):'₦0';const isPageantry=!!(item&&item.pageantry);document.getElementById('pageantryEligibility').style.display=isPageantry?'block':'none';document.getElementById('indigeneLabel').style.display=isPageantry?'flex':'none';document.getElementById('taiIndigene').required=isPageantry;if(!isPageantry)document.getElementById('taiIndigene').checked=false;}
+select.addEventListener('change',updateFee);
+document.getElementById('registrationForm').addEventListener('submit',event=>{
+ event.preventDefault();
+ const item=activities.find(x=>x.name===select.value);
+ if(!termsAccept.checked){document.getElementById('registrationStatus').textContent='Please read and tick the Terms & Conditions acceptance box before proceeding.';document.getElementById('terms').scrollIntoView({behavior:'smooth'});return;}
+ if(!item){document.getElementById('registrationStatus').textContent='Please select an activity.';return;}
+ if(item.pageantry&&!document.getElementById('taiIndigene').checked){document.getElementById('registrationStatus').textContent='Please confirm that you are an indigene of Tai Local Government Area to proceed with pageantry registration.';return;}
+ document.getElementById('registrationStatus').textContent='Your details have been checked in this preview. This page does not transmit or save your information. Please complete registration and payment through the appropriate authority.';
 });
-function openModal(name){document.getElementById('modalTitle').textContent=name;document.getElementById('modal').classList.add('open')}
-function closeModal(){document.getElementById('modal').classList.remove('open')}
-document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
-const regCats=document.getElementById('registrationCategories');
-categories.forEach((name,i)=>{const label=document.createElement('label');label.className='category-option';label.innerHTML=`<input type="checkbox" name="categories" value="${name}"><span>${name}</span>`;regCats.appendChild(label)});
-function updateFee(){const count=document.querySelectorAll('input[name="categories"]:checked').length;document.getElementById('categoryCount').textContent=`${count} ${count===1?'category':'categories'} selected`;document.getElementById('feeTotal').textContent='₦'+(count*5000).toLocaleString('en-NG')}
-regCats.addEventListener('change',updateFee);
-document.getElementById('photo').addEventListener('change',e=>{const f=e.target.files[0];if(f&&f.size>5*1024*1024){e.target.value='';alert('Please choose an image smaller than 5MB.')}});
-document.getElementById('registrationForm').addEventListener('submit',e=>{e.preventDefault();const chosen=document.querySelectorAll('input[name="categories"]:checked').length;if(!chosen){alert('Please select at least one category.');return}document.getElementById('registrationMessage').textContent='Your details passed the browser-side preview check, but nothing has been submitted or saved. The secure database and Paystack payment service must be connected before real applications can be accepted.';alert('Registration form preview only. Your application has NOT been submitted and no payment has been made.');});
+const termsAccept=document.getElementById('termsAccept');
+const termsContinue=document.getElementById('termsContinue');
+termsAccept.addEventListener('change',()=>{termsContinue.disabled=!termsAccept.checked;document.getElementById('termsStatus').textContent=termsAccept.checked?'Your acceptance is checked. Confirm below.':'Tick the box to confirm your acceptance.';});
+termsContinue.addEventListener('click',()=>{if(!termsAccept.checked)return;document.getElementById('termsStatus').textContent='Acceptance confirmed for this preview only. No registration data or consent record has been saved.';});
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body></html>
