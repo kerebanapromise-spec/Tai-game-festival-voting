@@ -95,28 +95,19 @@ input,select{width:100%;padding:12px;border:1px solid #45473d;background:#0e0f0c
   <div class="notice"><b>Eligibility:</b> Category B (Pageantry) is strictly for indigenes of Tai Local Government Area, Rivers State. Tug of War registration is charged per person. All registrations must be completed through the appropriate authority.</div>
 </section>
 <section id="register">
-  <div class="eyebrow">Participant information</div><h2>Registration Interest Form</h2>
-  <p class="sub">Provide your details and select one activity. This preview displays the applicable fee; official registration and payment must be completed through the appropriate authority.</p>
-  <div class="dialog" style="width:100%;max-width:760px;margin-top:24px">
-    <form id="registrationForm">
-      <div class="form-grid">
-        <div><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" required placeholder="Enter your first name"></div>
-        <div><label for="otherNames">Other names</label><input id="otherNames" name="otherNames" autocomplete="additional-name" placeholder="Enter other names (if any)"></div>
-        <div><label for="surname">Surname</label><input id="surname" name="surname" autocomplete="family-name" required placeholder="Enter your surname"></div>
-        <div><label for="lga">L.G.A</label><input id="lga" name="lga" required placeholder="Enter your Local Government Area"></div>
-        <div><label for="state">State</label><input id="state" name="state" required placeholder="Enter your state"></div>
-        <div><label for="community">Community</label><input id="community" name="community" required placeholder="Enter your community"></div>
-        <div><label for="gender">Gender</label><select id="gender" name="gender" required><option value="">Select gender</option><option value="Male">Male</option><option value="Female">Female</option><option value="Prefer not to say">Prefer not to say</option></select></div>
-        <div><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="Enter your active phone number"></div>
-        <div class="wide"><label for="activity">Select category and activity</label><select id="activity" name="activity" required><option value="">Choose an activity</option></select></div>
-      </div>
-      <div class="calc"><span>Registration fee</span><strong id="feeDisplay">₦0</strong></div>
-      <div id="pageantryEligibility" class="notice" style="display:none">Pageantry is restricted to indigenes of Tai Local Government Area, Rivers State. Your indigene status may be verified by the organisers.</div>
-      <label id="indigeneLabel" class="accept-label" style="display:none"><input type="checkbox" id="taiIndigene"><span>I confirm that I am an indigene of Tai Local Government Area, Rivers State.</span></label>
-      <button class="btn" type="submit" style="margin-top:18px">Review Registration Details</button>
-      <p class="pending" id="registrationStatus" aria-live="polite">No registration or payment will be submitted from this preview.</p>
-    </form>
+  <div class="eyebrow">Participant information</div>
+  <h2>Official Registration Form</h2>
+  <p class="sub">Complete your registration using the official Tai Game Festival and Pageantry form below. Your submission will be recorded in the organisers' Google Forms response system.</p>
+  <div style="margin-top:24px;border:1px solid #6b592f;border-radius:10px;overflow:hidden;background:#fff">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSeAxdqwkOGxXj69c4VJuU8_0ZSz4dMjhEJ6j_I4F5e7XER-yw/viewform?embedded=true"
+      title="Tai Game Festival and Pageantry Registration Form"
+      width="100%" height="1250" frameborder="0" marginheight="0" marginwidth="0"
+      style="display:block;min-height:1000px;border:0">
+      Loading registration form…
+    </iframe>
   </div>
+  <p class="pending" style="margin-top:14px">If the form does not load, <a href="https://forms.gle/GHYhWuKp84AiexG69" target="_blank" rel="noopener" style="color:var(--gold2)">open the registration form directly</a>.</p>
 </section>
 <section id="terms">
   <div class="eyebrow">Please read before registering</div>
@@ -231,24 +222,12 @@ function renderCards(items, targetId){
   items.forEach((item,index)=>{
     const card=document.createElement('article');card.className='category';
     card.innerHTML=`<div><small>${item.category.toUpperCase()}</small><h3>${item.name}</h3><div style="color:var(--gold2);font-weight:800">${money(item.fee)}${item.note?' <span style="font-size:12px;color:var(--muted);font-weight:500">'+item.note+'</span>':''}</div></div><button type="button">Select for registration →</button>`;
-    card.querySelector('button').addEventListener('click',()=>{const select=document.getElementById('activity');select.value=item.name;updateFee();document.getElementById('register').scrollIntoView({behavior:'smooth'});});
+    card.querySelector('button').addEventListener('click',()=>{document.getElementById('register').scrollIntoView({behavior:'smooth'});});
     target.appendChild(card);
   });
 }
 renderCards(activities.filter(x=>!x.pageantry),'gamesGrid');
 renderCards(activities.filter(x=>x.pageantry),'pageantryGrid');
-const select=document.getElementById('activity');
-activities.forEach(item=>{const option=document.createElement('option');option.value=item.name;option.textContent=`${item.category} — ${item.name} (${money(item.fee)}${item.note?' '+item.note:''})`;select.appendChild(option);});
-function updateFee(){const item=activities.find(x=>x.name===select.value);document.getElementById('feeDisplay').textContent=item?money(item.fee)+(item.note?' '+item.note:''):'₦0';const isPageantry=!!(item&&item.pageantry);document.getElementById('pageantryEligibility').style.display=isPageantry?'block':'none';document.getElementById('indigeneLabel').style.display=isPageantry?'flex':'none';document.getElementById('taiIndigene').required=isPageantry;if(!isPageantry)document.getElementById('taiIndigene').checked=false;}
-select.addEventListener('change',updateFee);
-document.getElementById('registrationForm').addEventListener('submit',event=>{
- event.preventDefault();
- const item=activities.find(x=>x.name===select.value);
- if(!termsAccept.checked){document.getElementById('registrationStatus').textContent='Please read and tick the Terms & Conditions acceptance box before proceeding.';document.getElementById('terms').scrollIntoView({behavior:'smooth'});return;}
- if(!item){document.getElementById('registrationStatus').textContent='Please select an activity.';return;}
- if(item.pageantry&&!document.getElementById('taiIndigene').checked){document.getElementById('registrationStatus').textContent='Please confirm that you are an indigene of Tai Local Government Area to proceed with pageantry registration.';return;}
- document.getElementById('registrationStatus').textContent='Your details have been checked in this preview. This page does not transmit or save your information. Please complete registration and payment through the appropriate authority.';
-});
 const termsAccept=document.getElementById('termsAccept');
 const termsContinue=document.getElementById('termsContinue');
 termsAccept.addEventListener('change',()=>{termsContinue.disabled=!termsAccept.checked;document.getElementById('termsStatus').textContent=termsAccept.checked?'Your acceptance is checked. Confirm below.':'Tick the box to confirm your acceptance.';});
